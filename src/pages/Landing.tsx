@@ -1,42 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useEffect, useState } from "react";
 
 const Landing = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen pt-16">
-        <div className="container mx-auto px-4 py-20">
-          <div className="text-center animate-fade-up">
-            <Skeleton className="h-16 w-3/4 mx-auto mb-6" />
-            <Skeleton className="h-8 w-2/3 mx-auto mb-8" />
-            <Skeleton className="h-12 w-40 mx-auto" />
-          </div>
-
-          <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <Skeleton className="h-48 w-full" />
-                <div className="p-6">
-                  <Skeleton className="h-6 w-3/4 mb-2" />
-                  <Skeleton className="h-4 w-2/3" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
