@@ -11,10 +11,18 @@ const Auth = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: isLogin ? "Welcome back!" : "Account created successfully!",
-      description: "You can now start exploring events.",
-    });
+    if (isLogin) {
+      toast({
+        title: "Welcome back!",
+        description: "You've successfully logged in.",
+      });
+    } else {
+      toast({
+        title: `${accountType === 'individual' ? 'Individual' : 'Organization'} Account Created!`,
+        description: `Welcome to EventHub! ${accountType === 'organization' ? 'You can now create and manage events.' : 'Start exploring events now!'}`,
+        duration: 5000,
+      });
+    }
   };
 
   return (

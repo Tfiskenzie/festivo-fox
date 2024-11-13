@@ -7,8 +7,9 @@ const EventPreview = () => {
 
   const handlePurchase = () => {
     toast({
-      title: "Ticket Purchased!",
-      description: "You've earned 50 cashback coins!",
+      title: "Ticket Purchased Successfully! 🎉",
+      description: "You've earned 50 cashback coins! Check your wallet.",
+      duration: 5000,
     });
   };
 
@@ -19,7 +20,7 @@ const EventPreview = () => {
           {/* Event Cover Image */}
           <div className="h-96 bg-gray-200">
             <img
-              src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81"
+              src="https://images.unsplash.com/photo-1501854140801-50d01698950b"
               alt="Event Cover"
               className="w-full h-full object-cover"
             />
