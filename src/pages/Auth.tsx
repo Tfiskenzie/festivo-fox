@@ -1,21 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { User, Building2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [accountType, setAccountType] = useState<"individual" | "organization" | null>(null);
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: isLogin ? "Welcome back!" : "Account created successfully!",
-      description: "You can now start exploring events.",
-    });
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen pt-20 pb-10 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
+            <Skeleton className="h-10 w-48 mx-auto mb-8" />
+            <div className="space-y-4">
+              <Skeleton className="h-12 w-full" />
+              <Skeleton className="h-12 w-full" />
+              <Skeleton className="h-12 w-full" />
+              <Skeleton className="h-10 w-full" />
+            </div>
+            <Skeleton className="h-6 w-48 mx-auto mt-6" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen pt-20 pb-10 bg-muted">
